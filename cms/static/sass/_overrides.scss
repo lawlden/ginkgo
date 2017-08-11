@@ -1,0 +1,108 @@
+
+//Global Overrides
+
+body {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  position: absolute;
+}
+
+html {
+  width: 100%;
+  position: absolute;
+}
+
+.break {
+  clear: both;
+}
+
+///////////////////////////////
+
+//Header Overrides
+
+.wrapper-header { 
+  .branding { 
+    a {
+      img {
+        max-height: 50px;
+        display: block;
+      }
+    }
+  }
+}
+
+#view-top {
+  .nav-account-user {
+    .label {
+      max-width: 350px;
+    }
+  
+  }
+
+  .info-course {
+    min-width: 35%;
+  }
+ 
+}
+
+///////////////////////////////
+
+//Footer Overrides
+
+
+
+///////////////////////////////
+
+//Index Page Overrides
+
+.wrapper-mast {
+  .new-course-button {
+    margin: 0;
+  }
+  
+  header {
+    .studio-home {
+      display: inline-block;
+    }
+
+    #header-home {
+      min-width: 65%;
+      margin: 0;  
+    }
+
+    #nav-home {
+      max-width: 25%;
+      ul {
+        width: auto;
+        margin: 0 3%;
+        li {
+          margin: 0 auto;
+        }
+      }
+    }
+
+  }
+
+}
+
+
+///////////////////////////////
+
+//Courseware Overrides
+
+header {
+  .nav-actions {
+    display: inline-block;
+  }
+
+}
+
+.content-supplementary {
+  .external-help-button {
+    text-align: center;
+    display: block;
+  }
+
+}

@@ -1,0 +1,25 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Contact")}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="container about">
+    <div id="container-contact">
+      <div id="contact">
+        <h1>${_("Contact")}</h1>
+        <p>General inquiries: <a href="mailto:info@enstructo.com">info@enstructo.com</a></p>
+        <p>Comments & non-technical support: <a href="mailto:feedback@enstructo.com">feedback@enstructo.com</a></p>
+        <p>Technical support: <a href="mailto:support@enstructo.com">support@enstructo.com</a></p>
+        <p>Billing inquiries: <a href="mailto:commerce@enstructo.com">commerce@enstructo.com</a></p>
+      </div>
+      <br />
+      <div id="address">
+        <p>Enstructo Incorporated<br>
+           2311 N 45th St # 212<br>
+           Seattle, WA 98103</p>
+      </div>
+    </div>
+    </section>
+</main>

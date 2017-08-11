@@ -1,0 +1,50 @@
+## mako
+<%!
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+%>
+<%!
+  from datetime import date
+%>
+
+<div class="wrapper-footer">
+  <footer>
+    <div class="colophon">
+      <nav class="nav-colophon">
+        <ol>
+          <li><a href="${reverse('about')}">${_("About")}</a></li>
+          <li><a href="${reverse('jobs')}">${_("Teach with Us")}</a></li>
+          <li><a href="${reverse('contact')}">${_("Contact")}</a></li>
+          <li><a href="${reverse('tos')}">${_("Terms of Service")}</a></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="reference">
+      <span>
+        <a href="http://openedx.org">
+          <img class="logo-footer" src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag.png" width="120" height="40" margin="0" alt="Powered by Open edX" />
+        </a>
+      </span>
+    </div>
+    <div class="break"></div>
+    <div class="copyright">
+        <span>
+            ${_('&#xA9;{year} Enstructo Incorporated. All rights reserved.').format(
+                year=date.today().year
+            )}
+        </span>
+    </div>
+    <div id="references"><a href="http://openedx.org">Powered by Open edX</a></div>
+  </footer>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98928788-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
