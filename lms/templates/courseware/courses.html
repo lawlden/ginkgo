@@ -39,7 +39,7 @@
           <form class="wrapper-search-input">
             <label for="discovery-input" class="sr">${_('Search for a course')}</label>
             <input id="discovery-input" class="discovery-input" placeholder="${_('Search for a course')}" type="text"/>
-            <button type="submit" class="button search-button postfix discovery-submit" title="${_('Search')}">
+            <button type="submit" class="search-button button postfix discovery-submit" title="${_('Search')}">
               <span class="icon fa fa-search" aria-hidden="true"></span>
               <div aria-live="polite" aria-relevant="all">
                 <div id="loading-indicator" class="loading-spinner hidden">
@@ -59,7 +59,7 @@
           <ul class="courses-listing">
             %for course in courses:
             <li class="courses-listing-item">
-              <%include file="/edx/app/edxapp/themes/enstructo/lms/templates/course.html" args="course=course" />
+              <%include file="../course.html" args="course=course" />
             </li>
             %endfor
           </ul>

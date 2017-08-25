@@ -5,8 +5,6 @@ $mid-gray: rgb(230,230,230);
 $text-gray: rgb(118,118,118);
 $border-gray: rgb(200,200,200);
 $base-gray: rgb(40,40,40);
-$dark-bg: url('../images/chalk.jpg') fixed;
-$banner-bg: url('../images/chalk.jpg');
 
 //Variable Overrides
 $header-bg: $off-white;
@@ -61,10 +59,6 @@ a {
   }
 } 
 
-#main {
-  width: 100% !important;
-}
-
 .break {
   clear: both;
 }
@@ -77,6 +71,12 @@ a {
   background: $off-white;
   min-width: 300px !important;
   max-width: 1200px;
+}
+
+#main {
+  h1,h2,h3,h4,h5,h6 {
+    color: $dark-text !important;
+  }
 }
 
 .course {
@@ -123,11 +123,30 @@ a {
 
 //LMS Header Overrides
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 1200px) {
   .header-global {
     .logo {
-      margin-right: 2px !important;
+      margin-left: 0;
     }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .header-global {
+    .logo {
+      margin-right: 10px !important;
+    }
+  }
+  .header-global.slim {
+    .course-header {
+      display: none !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #username {
+    display: none !important;
   }
 }
 
@@ -135,90 +154,106 @@ a {
   min-width: 0 !important;
 }
 
-.header-global {
+#global-navigation {
+  border-color: $border-gray;
+  border-bottom-width: 1px;
   min-width: 0 !important;
   color: $base-gray;
   text-decoration: none;
-  text-shadow: none;  
-  
-  #global-links {
-    a {
-      color: $base-gray;
-      font-weight: bold;
-      text-decoration: none;
-
-      &:hover {
-        color: $hover-blue;
-        text-decoration: none;   
-      }
-    }
+  text-shadow: none;
+  h2 {
+    color: $dark-text;
+    text-shadow: none;
   }
-
-  #head-market {  
-    a {
-      color: $base-gray;
-      font-weight: bold;
-
-      &:hover {
-        color: $hover-blue;
-      } 
-    }
-  }
-  
-  .btn-login {
-    color: $light-text;
+  a {
+    color: $base-gray;
     font-weight: bold;
-    margin: 3px 8px 0 0;
-    border: 1px solid $hover-blue;
+    text-decoration: none;
     &:hover {
-      background: transparent;
-      text-decoration: none;
       color: $hover-blue;
+      text-decoration: none;
+    }
+  }  
+}
+
+.header-global {  
+  .logo {
+    margin-right: 40px;
+    margin-left: 8px;
+    img {
+      margin-top: -7px;
+    }
+  }  
+  .nav-global {
+    li {
+      margin-right: 15px;
+    }
+  }
+  .nav-courseware {
+    #btn-login {
+      background-color: $hover-blue;
+      color: $light-text;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: none;
+      margin: 3px 8px 0 0;
+      border: 1px solid $hover-blue;
+      border-radius: 3px;
+      &:hover {
+        background: transparent;
+        text-decoration: none;
+        color: $hover-blue;
+      }
     } 
   }
-
   #username {
-    margin-right: 5px;
-    margin-top: 7px;
+    margin-right: 8px;
     border-bottom: none;
     max-width: 95px;
     text-overflow: ellipsis;
-
-    .user-link {
-      background: transparent !important;
+    a {
+      background-color: transparent;
       color: $base-gray;
-      text-shadow: none;
-      text-decoration: underline;  
-
+      text-shadow: none;  
       &:hover {
         color: $hover-blue;
         background-color: transparent;
       }
     }
   }
-  
-  .user {
-    padding-top: 5px;
+  #headdrop {
+    float: right;
+    margin-top: 5px;
     margin-right: 8px;
-    
-    a:hover {
-      color: $hover-blue;
-    }
- 
-    #headdrop {
-      float: right;
+    .user-menu {
       border-radius: 50%;
-      .dropdown {
+      height: 31px;
+      width: 31px;
+      a:hover {
+        color: $hover-blue;
+      }
+      .user-dropdown {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        text-align: center;
         border-radius: inherit;
-        border: 1px solid;
+        border: 1px solid $base-gray;
         &:hover {
-          color: $hover-blue
+          color: $hover-blue;
+          border-color: $hover-blue;
+        }
+       .fa-custom {
+         color: inherit !important;
         }
       }
-    }
-
-    .fa-custom {
-      color: inherit !important;
+      .user-dropdown-menu {
+        margin-top: 2px;
+        margin-right: 2px;
+        a {
+          font-weight: normal;
+        }
+      }  
     }
   }
 }
@@ -227,25 +262,39 @@ a {
   min-width: 0 !important;
   .course-header {
     width: auto;
+    max-width: 55%;
     margin-top: 13px;
   }
-
+  .logo {
+    img {
+      margin-top: -7px;
+    }
+  }
+  #headdrop {
+    .user-menu {
+      height: 31px;
+      width: 31px;
+      .user-dropdown {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        text-align: center;
+        fa {
+          margin: auto;
+        }
+      }
+    }
+  }
   #slimlogo {
     margin: 0;
     padding: 0;
   }
 }
 
-#global-navigation {
-  h2 {
-    color: $dark-text;
-    text-shadow: none;
-  }
-}
-
 //////////////////////////////////////////
 
 //LMS Footer Overrides
+
 .view-in-course {
   .wrapper-footer {
     margin-top: 0;
@@ -353,11 +402,25 @@ a {
 //Static_Templates Overrides
 
 #main {
-  #container-about {
+  .container.about {
     max-width: 768px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    border: 1px solid $border-gray;
+    border-radius: 4px;
+    background-color: $light-gray;
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  #container-about {
+    line-height: 1.4em;
+    p:last-child {
+      padding-bottom: 40px;
+    } 
   }
   #container-contact {
-    max-width: 768px;
     #address {
       margin-top: 100px;
     }
@@ -481,6 +544,16 @@ a {
 
 #main {
   .wrapper-profile {
+    .wrapper-profile-field-account-privacy {
+      .u-field-account_privacy {
+        padding: 7px 30px;
+        border-radius: 4px;
+        border: 1px solid $border-gray;
+        .u-field-value {
+          padding-top: 2px;
+        }
+      }
+    }
     .wrapper-profile-section-two {
       width: 100%;
       .u-field-title {
@@ -489,8 +562,21 @@ a {
     }
   }
   #login-and-registration-container {
+    border: 1px solid $border-gray;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    border-radius: 4px;
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
+    }
     #login-form {
       #login {
+        a:hover {
+          text-decoration: none;
+        }
         .login-button {
           color: $light-text;
           background-color: $hover-blue;
@@ -639,21 +725,23 @@ a {
           border: 1px solid $border-gray;
           border-radius: 7px;
           .course-search {
-            .search-input:focus {
-              border-color: $hover-blue;
+            &:hover {
+              .search-input {
+                border-color: $hover-blue;
+              }
+            }
+            .search-input {
+              &:focus {
+                border-color: $hover-blue;
+              }
             }
           }
           .heading-group {
             margin: 0 auto;
             display: inline;
-            #banner-text {
-              text-align: center;
-              margin: 0 auto;
-            
-              h1 {
-                text-align: center;
-                margin: 0 auto;
-              }
+            text-align: center;
+            h1 {
+              text-align: inherit;
             }
           }
         }
@@ -945,34 +1033,31 @@ a {
   }
 }
 
-#nav-button {
-  height: auto;
-  width: 2vw;
-  max-width: 22px;
-  margin-left: -1.5vw;
-  float: left;
-  position: fixed;
-  margin-top: 25vh;
-  margin-bottom: 50vh;
-  .fa-bars {
-    width: auto;
-    height: auto;
-    color: $dark-text;
-    font-size: 1.5em;
-    text-align: center;
-    margin: auto;
-    padding: 2px 2px 2px 2px;
-    background-color: $light-gray;
-    box-shadow: 1px 2px 1.5px $base-gray;
-    border-radius: 10%;
-    opacity: 0.75;
-  }
+#course-container {
+  max-width: 1180px;
 }
 
-#content {
+#content { 
+  color: $dark-text;
   //top-nav
   .wrapper-course-material {
     max-width: 1180px;
+    .course-material {
+      .tabs {
+        .tab {
+          .active {
+            color: $hover-blue !important;
+            border-bottom-color: $hover-blue !important;
+          }
+          a {
+            &:hover {
+              color: $hover-blue !important;
+              border-bottom-color: $hover-blue !important;
+            }
+          }
+        }
+      }
+    }
   }
   //progress page
   .profile-wrapper {
@@ -996,31 +1081,6 @@ a {
   //course body
   .course-wrapper {
     height: 100%;
-    #side-nav {
-      border-right: none;
-      height: inherit !important;
-      margin-top: 11%;
-      margin-bottom: auto;
-      width: 0;
-      position: fixed;
-      z-index: 5000;
-      top: 0;
-      left: 0;
-      background-color: transparent;
-      overflow-x: hidden;
-      transition: 0.5s;
-      opacity: 0.97;
-      .closebtn {
-        position: relative;
-        float: right;
-        font-size: 24px;
-        margin: 9px -25px 5px 0;;
-        color: $dark-text;
-        &:hover {
-          border-color: $hover-blue;
-          color: $hover-blue;
-        }
-      }
       .courseware-bookmarks-button {
         button {
           color: $light-text;
@@ -1081,10 +1141,10 @@ a {
         }
       }
     }
-  }
+  
   //course home
   #main {
-    width: 100%;
+    width: auto;
     margin: 0 auto;
     .container {
       .home {
@@ -1100,14 +1160,16 @@ a {
       max-width: 1200px;
       padding: 20px 0 10px 0;
       .page-header-main {
+        padding: 0 10px;
         width: auto;
-        h3 {
+        h2 {
           margin: 0 0 5px 10px;
         }
       }
       .page-header-secondary {
         background: $hover-blue;
         border: 2px solid $hover-blue;
+        border-radius: 3px;
         color: $light-text;
         a {
           color: inherit;
@@ -1116,6 +1178,15 @@ a {
           background: transparent;
           color: $hover-blue !important;
         }
+      }
+    }
+    .info-wrapper {
+      padding: 20px 0;
+      .handouts {
+        border-left: 1px solid $border-gray;
+        a:hover {
+          color: $hover-blue;
+        } 
       }
     }
   }
@@ -1294,6 +1365,7 @@ a {
 #content {
   .course-info {
     header {
+      padding-top: 75px;
       .intro-inner-wrapper {
         min-width: 320px;
         .heading-group {
@@ -1368,7 +1440,7 @@ a {
     float: left; 
     .studio-view {
       margin: auto;
-      a {
+      .instructor-info-action {
         margin-right: 40%;
         float: right;
       }
@@ -1651,6 +1723,16 @@ a {
   }
 }
 
+@media screen and (min-width: 1200px) {
+  #main {
+    .find-courses {
+      .courses-container {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
 #main {
   .find-courses {
     width: 100%;
@@ -1658,7 +1740,7 @@ a {
     .courses-container{
       margin: auto;
       padding: 40px 0 75px 0 !important;
-      width: 100%;
+      width: 96%;
       #discovery-form {
         max-width: 1200px;
         margin: auto 10px auto 10px;
@@ -1681,6 +1763,11 @@ a {
           margin: 2px 1% 0 1%;
           width: 40%;
           float: right;
+          &:hover {
+            #discovery-input {
+              border-color: $hover-blue;
+            }
+          }
           #discovery-input {
             box-shadow: none;
             &:focus {

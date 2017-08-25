@@ -1,3 +1,18 @@
+//Color & Image Variables
+$off-white: rgb(252,252,252);
+$light-gray: rgb(245,245,245);
+$mid-gray: rgb(230,230,230);
+$text-gray: rgb(118,118,118);
+$border-gray: rgb(200,200,200);
+$base-gray: rgb(40,40,40);
+$hover-blue: rgb(0,121,188);
+
+//Theme-specific Variables
+$light-text: $off-white;
+$dark-text: $base-gray;
+$border: 1px solid $border-gray;
+
+
 
 //Global Overrides
 
@@ -16,6 +31,10 @@ html {
 
 .break {
   clear: both;
+}
+
+#main {
+  margin-bottom: 75px;
 }
 
 ///////////////////////////////
@@ -49,29 +68,20 @@ html {
 
 ///////////////////////////////
 
-//Footer Overrides
-
-
-
-///////////////////////////////
-
 //Index Page Overrides
 
 .wrapper-mast {
   .new-course-button {
     margin: 0;
-  }
-  
+  }  
   header {
     .studio-home {
       display: inline-block;
     }
-
     #header-home {
       min-width: 65%;
       margin: 0;  
     }
-
     #nav-home {
       max-width: 25%;
       ul {
@@ -82,11 +92,22 @@ html {
         }
       }
     }
-
   }
-
 }
-
+.wrapper-content {
+  .content-primary {
+    .notice-item {
+      .accidental {
+        a {
+          color: $dark-text;
+          &:hover {
+            color: $hover-blue;
+          }
+        }
+      }
+    }
+  }
+}
 
 ///////////////////////////////
 
@@ -105,4 +126,12 @@ header {
     display: block;
   }
 
+}
+
+///////////////////////////////
+
+//Footer Overrides
+
+.wrapper-footer {
+  border-top: 1px solid $border-gray;
 }

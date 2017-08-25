@@ -24,7 +24,7 @@ from django.conf import settings
         <span class="course-organization">${course.display_org_with_default}</span>
         %endif
         <span class="course-title">${course.display_name_with_default}</span>
-        %if course.effort:
+        %if course.effort !="0.0":
         <span id="cpe" class="course-organization">${course.effort} CPE Hours</span>
         %endif
       </h2>

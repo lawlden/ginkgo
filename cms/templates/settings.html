@@ -47,11 +47,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
   <header class="mast has-subtitle">
     <h1 class="page-header">
       <small class="subtitle">${_("Settings")}</small>
-      % if user.is_staff:
       <span class="sr">&gt; </span>${_("Schedule & Details")}
-      % else:
-      <span class="sr">&gt; </span>${_("Course Overview & Details")}
-      % endif
     </h1>
   </header>
 </div>
@@ -65,7 +61,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
             <h2 class="title-2">${_("Basic Information")}</h2>
             <span class="tip">${_("The nuts and bolts of your course")}</span>
           </header>
-
+          % if user.is_staff:
           <ol class="list-input">
             <li class="field text is-not-editable" id="field-course-organization">
               <label for="course-organization">${_("Organization")}</label>
@@ -85,7 +81,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                 class="long" id="course-name" readonly />
             </li>
           </ol>
-
+          % endif
           % if about_page_editable:
           <div class="note note-promotion note-promotion-courseURL has-actions">
             <h3 class="title">${_("Course Summary Page")} <span class="tip">${_("(for student enrollment and access)")}</span></h3>
@@ -180,9 +176,8 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
           </div>
           <hr class="divide" />
         % endif
-
-        <div class="group-settings schedule">
         % if user.is_staff:
+        <div class="group-settings schedule">
           <header>
             <h2 class="title-2">${_('Course Schedule')}</h2>
             <span class="tip">${_('Dates that control when your course can be viewed')}</span>
@@ -289,7 +284,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                   <option value="${lang}">${label}</option>
                 % endfor
               </select>
-              <span class="tip tip-stacked">${_("Identify the course language here. This is used to assist users find courses that are taught in a specific language.")}</span>
+              <span class="tip tip-stacked">${_("Identify the course language here. This is used to assist users find courses that are taught in a specific language. It is also used to localize the 'From:' field in bulk emails.")}</span>
             </li>
           </ol>
         </div>
@@ -452,7 +447,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
 
                 % if about_page_editable:
                 <li class="field video" id="field-course-introduction-video">
-                  <label for="course-introduction-video">${_("Course Introduction Video")}</label>
+                  <label for="course-introduction-video">${_("Course Introduction Video (optional)")}</label>
                   <div class="input input-existing">
                     <div class="current current-course-introduction-video">
                       <iframe width="618" height="350" title="${_('Course Introduction Video')}" src="" frameborder="0" allowfullscreen></iframe>
@@ -463,9 +458,9 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                   </div>
 
                   <div class="input">
-                    ## Translators: This is the placeholder text for a field that requests a YouTube video ID for a course video
-                    <input type="text"  dir="ltr" class="long new-course-introduction-video add-video-data" id="course-introduction-video" value="" placeholder="${_("your YouTube video's ID")}" autocomplete="off" />
-                    <span class="tip tip-stacked">${_("Enter your YouTube video's ID (along with any restriction parameters)")}</span>
+                    ## Translators: This is the placeholder text for a field that requests a video ID for a course video
+                    <input type="text"  dir="ltr" class="long new-course-introduction-video add-video-data" id="course-introduction-video" value="" placeholder="${_("ID for your Course Introduction Video")}" autocomplete="off" />
+                    <span class="tip tip-stacked">Found on your course's <strong>Video Upload</strong> page</span>
                   </div>
                 </li>
                   % endif
@@ -508,7 +503,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
 
           % if about_page_editable or is_prerequisite_courses_enabled or is_entrance_exams_enabled:
             <hr class="divide" />
-           % if user.is_staff:
+
             <div class="group-settings requirements">
               <header>
                 <h2 class="title-2">${_("Requirements")}</h2>
@@ -518,8 +513,8 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
               <ol class="list-input">
                 % if about_page_editable:
                 <li class="field text" id="field-course-effort">
-                  <label for="course-effort">${_("CPE Hour(s)")}</label>
-                  <input type="text" class="short time" id="course-effort" placeholder="0.0" />
+                  <label for="course-effort">${_("Hours of Effort per Week")}</label>
+                  <input type="text" class="short time" id="course-effort" placeholder="HH:MM" />
                   <span class="tip tip-inline">${_("Time spent on all course work")}</span>
                 </li>
                 % endif
@@ -560,7 +555,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
               </ol>
             </div>
           % endif
-          %endif
+
           % if self_paced_enabled:
 
             <hr class="divide" />
@@ -585,9 +580,9 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                 </li>
               </ol>
             </div>
+        % endif
+          % endif
 
-          % endif
-          % endif
           % if settings.FEATURES.get("LICENSING", False):
             <hr class="divide" />
 
@@ -610,7 +605,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
       </form>
     </div>
     <div class="content-supplementary" role="complementary">
-    <!-- <div class="bit">
+     <div class="bit">
         <h3 class="title-3">${_("How are these settings used?")}</h3>
         <p>${_("Your course's schedule determines when students can enroll in and begin a course.")}</p>
 
@@ -638,5 +633,4 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
     </div>
   </div>
 </div>
--->
 </%block>

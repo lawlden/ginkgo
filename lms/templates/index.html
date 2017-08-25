@@ -4,7 +4,7 @@
 <%!
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
-from django.conf import settings
+
 from openedx.core.djangolib.markup import HTML, Text
 %>
 
@@ -18,19 +18,20 @@ from openedx.core.djangolib.markup import HTML, Text
                 ${homepage_overlay_html | n, decode.utf8}
               % else:
                   ## Translators: 'Open edX' is a registered trademark, please keep this untranslated. See http://open.edx.org for more information.
-                 <span id="banner-text"><h1>${Text(_(u"Welcome to {PLATFORM_NAME}").format(PLATFORM_NAME=settings.PLATFORM_NAME)).format(registered_trademark=HTML("<sup style='font-size: 65%'>&reg;</sup>"))}</h1>
+                  <h1 id="banner-text">${Text(_(u"Welcome to {PLATFORM_NAME}").format(PLATFORM_NAME=settings.PLATFORM_NAME))}</h1>
                   ## Translators: 'Open edX' is a registered trademark, please keep this untranslated. See http://open.edx.org for more information.
-                  <p>${_("Continuing education for information security and data privacy professionals")}</p></span>
+                  <br />
+                  <p>${_("Continuing education for information security and data privacy professionals")}</p>
               % endif
             </div>
             % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
               <div class="course-search">
                 <form method="get" action="/courses">
-                  <label><span  class="sr">${_("Search for a course")}</span>
+                  <label><span class="sr">${_("Search for a course")}</span>
                     <input class="search-input full-size-input" name="search_query" type="text" placeholder="${_("Search courses by title, topic, cert or instructor")}"></input>
                     <input class="search-input mobile-input" name="search_query" type="text" placeholder="${_("Search for a course")}"></input>
                   </label>
-                  <button class="button search-button" type="submit">
+                  <button class="search-button" type="submit">
                     <span class="icon fa fa-search" aria-hidden="true"></span><span class="sr">${_("Search")}</span>
                   </button>
                 </form>
@@ -50,6 +51,7 @@ from openedx.core.djangolib.markup import HTML, Text
 
       </header>
       <%include file="${courses_list}" />
+
     </section>
 </main>
 

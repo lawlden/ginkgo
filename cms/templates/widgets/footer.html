@@ -1,6 +1,9 @@
 <%!
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
+from datetime import datetime
+from django.conf import settings
+import pytz
 %>
 
 <div class="wrapper-footer wrapper">
@@ -8,7 +11,7 @@ from django.core.urlresolvers import reverse
 
     <div class="footer-content-primary">
       <div class="colophon">
-        <p>&copy; ${settings.COPYRIGHT_YEAR} <a data-rel="edx.org" href="${settings.LMS_ROOT_URL}/about" rel="external">${settings.PLATFORM_NAME} Incorporated</a>.</p>
+        <p>&copy; ${datetime.now(pytz.timezone(settings.TIME_ZONE)).year} <a data-rel="edx.org" href="${settings.LMS_ROOT_URL}" rel="external">${settings.PLATFORM_NAME} Incorporated</a>, all rights reserved.</p>
       </div>
 
       % if is_any_marketing_link_set(['TOS', 'PRIVACY']):
@@ -29,12 +32,12 @@ from django.core.urlresolvers import reverse
       % endif
     </div>
 
-    <div class="footer-content-secondary" aria-label="{_('Legal')}">
+    <div class="footer-content-secondary" aria-label="${_("Legal")}">
       <div class="footer-about-copyright">
         ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
         <p>
           ## Translators: 'EdX', 'edX', 'Studio', and 'Open edX' are trademarks of 'edX Inc.'. Please do not translate any of these trademarks and company names.
-          ${_("edX, Open edX, and the edX and Open edX logos are registered trademarks or trademarks of {link_start}edX Inc.{link_end}").format(
+          ${_("EdX, Open edX, Studio, and the edX and Open edX logos are trademarks of {link_start}edX Inc.{link_end}").format(
             link_start=u"<a data-rel='edx.org' href='https://www.edx.org/'>",
             link_end=u"</a>"
           )}
