@@ -134,4 +134,12 @@ header {
 
 .wrapper-footer {
   border-top: 1px solid $border-gray;
+  margin: 0;
+  .primary {
+    .footer-content-secondary {
+      .footer-about-copyright {
+        margin-top: 4px;
+      }
+    }
+  }
 }

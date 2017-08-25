@@ -47,7 +47,11 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
   <header class="mast has-subtitle">
     <h1 class="page-header">
       <small class="subtitle">${_("Settings")}</small>
+    % if user.is_staff:
       <span class="sr">&gt; </span>${_("Schedule & Details")}
+    % else:
+      <span class="sr">&gt; </span>${_("Course Overview & Details")}
+    % endif
     </h1>
   </header>
 </div>
@@ -174,10 +178,10 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                 <p>No credit requirements found.</p>
               % endif
           </div>
-          <hr class="divide" />
         % endif
-        % if user.is_staff:
+          <hr class="divide" />
         <div class="group-settings schedule">
+        % if user.is_staff:
           <header>
             <h2 class="title-2">${_('Course Schedule')}</h2>
             <span class="tip">${_('Dates that control when your course can be viewed')}</span>
@@ -269,6 +273,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
           % endif
         </div>
         % endif
+        
         % if about_page_editable:
         <div class="group-settings course_details">
           <header>
@@ -450,6 +455,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                   <label for="course-introduction-video">${_("Course Introduction Video (optional)")}</label>
                   <div class="input input-existing">
                     <div class="current current-course-introduction-video">
+                      <p><a class="link-courseURL" rel="external" href="${link_for_about_page}">View Video on Course About Page</a></p>
                       <iframe width="618" height="350" title="${_('Course Introduction Video')}" src="" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="actions">
@@ -503,7 +509,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
 
           % if about_page_editable or is_prerequisite_courses_enabled or is_entrance_exams_enabled:
             <hr class="divide" />
-
+          % if user.is_staff:
             <div class="group-settings requirements">
               <header>
                 <h2 class="title-2">${_("Requirements")}</h2>
@@ -553,9 +559,10 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                 </li>
                 % endif
               </ol>
-            </div>
           % endif
-
+            </div>
+ 
+          % endif
           % if self_paced_enabled:
 
             <hr class="divide" />
@@ -604,12 +611,11 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
           % endif
       </form>
     </div>
+ 
     <div class="content-supplementary" role="complementary">
      <div class="bit">
         <h3 class="title-3">${_("How are these settings used?")}</h3>
-        <p>${_("Your course's schedule determines when students can enroll in and begin a course.")}</p>
-
-        <p>${_("Other information from this page appears on the About page for your course. This information includes the course overview, course image, introduction video, and estimated time requirements. Students use About pages to choose new courses to take.")}</p>
+        <p>${_("Information from this page appears on the About page for your course. This information includes the course overview, course image, introduction video, and estimated time requirements. Students use About pages to choose new courses to take.")}</p>
      </div>
 
      <div class="bit">
@@ -623,9 +629,11 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
         <nav class="nav-related" aria-label="${_('Other Course Settings')}">
           <ul>
             <li class="nav-item"><a href="${grading_config_url}">${_("Grading")}</a></li>
+          %if user.is_staff:
             <li class="nav-item"><a href="${course_team_url}">${_("Course Team")}</a></li>
             <li class="nav-item"><a href="${utils.reverse_course_url('group_configurations_list_handler', context_course.id)}">${_("Group Configurations")}</a></li>
             <li class="nav-item"><a href="${advanced_config_url}">${_("Advanced Settings")}</a></li>
+          %endif
           </ul>
         </nav>
      % endif
