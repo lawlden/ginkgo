@@ -146,7 +146,20 @@ html {
 //Course Experience
 
 @media screen and (max-width: 768px) {
+  .wrapper-course-material {
+    .course-material {
+      .tabs {
+        display: table;
+        margin: auto
+      }
+    }
+  }
   #course-container {
+    .page-header {
+      .page-header-main {
+        text-align: center;
+      }
+    }
     .page-content {
       main.layout-col {
         padding-right: 0 !important;
@@ -154,6 +167,9 @@ html {
         #main {
           padding-right: 0 !important;
         }
+      }
+      .course-sidebar {
+        border-top: 1px solid $border-gray
       }
     }
   }
@@ -175,6 +191,20 @@ html {
         display: table;
         float: none;
         margin: auto;
+      }
+    }
+    main.course-outline {
+      font-size: 0.9em;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #course-container {
+    .page-content {
+      padding: 6px;
+      main.course-outline {
+        font-size: 0.72em;
       }
     }
   }
@@ -298,6 +328,25 @@ html {
 }
 
 //Footer
+
+@media screen and (max-width: 600px) {
+  .wrapper-footer {
+    footer {
+      .copyright {
+        padding-top: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 465px) {
+  #terms-of-service {
+    display: none !important;
+  }
+  #t-o-s {
+    display: inline !important;
+  }
+}
 
 .view-in-course {
   .wrapper-footer {

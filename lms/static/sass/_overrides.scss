@@ -353,6 +353,15 @@ a {
   }
 }
 
+@media screen and (max-width: 465px) {
+  #terms-of-service {
+    display: none !important;
+  }
+  #t-o-s {
+    display: inline !important;
+  }
+}
+
 @media screen and (min-width: 601px) {
   #references {
     display: none;
@@ -818,11 +827,6 @@ a {
 //////////////////////////////////////////
 
 //Courseware Overrides
-@media screen and (min-width: 1200px) {
-  #nav-button {
-    margin-left: -14px !important;
-  }
-}
 
 @media screen and (max-width: 1230px) {
   #content {
@@ -845,17 +849,47 @@ a {
   }
 }
 
-@media screen and (max-width: 769px) {
-  #nav-button {
-    margin-left: -2vw !important;
+@media screen and (max-width: 768px) {
+  #main {
+    .home {
+      .page-header-main {
+        padding: 0 !important;
+        width: 100% !important;
+        h2 {
+          margin: 5px 0 !important;
+          text-align: center;
+        }
+        .page-subtitle {
+          text-align: center;
+        }
+      }
+      .page-header-secondary {
+        width: 118px;
+        margin: auto;
+        text-align: center !important;
+        display: table;
+        float: none !important;
+      }
+    }
+  }
+  .wrapper-course-material {
+    .course-material {
+      .tabs {
+        display: table;
+        margin: auto
+      }
+    }
   }
   #main {
     .info-wrapper {
       .updates {
         padding: 20px !important;
+        h3 {
+          text-align: center;
+        }
       }
       .handouts {
-        display: inline;
+        display: inline-block;
         width: 100%;
         margin: auto;
         h4 {
@@ -877,33 +911,6 @@ a {
 }
 
 @media screen and (max-width: 600px) {
-  #main {
-    .home {
-      .page-header-main {
-        width: 100% !important;
-        h3 {
-          margin: 5px 0 !important;
-          text-align: center;
-        }
-        .page-subtitle {
-          text-align: center;
-        }
-      }
-      .page-header-secondary {
-        width: 118px;
-        margin: auto;
-        text-align: center !important;
-        display: table;
-        float: none !important;
-      }
-    }
-  }
-  #nav-button {
-    .fa-bars {
-      font-size: 1.2em !important;
-      padding: 4px 2px 2px 2px !important;
-    }
-  }
   .instructor-info-action {
     font-size: 0.8em !important;
   }
@@ -937,25 +944,19 @@ a {
     }
   }
   #instructor-dashboard-content {
-    h1 {
-      width: 50%;
-      margin: 0 25%;
+    h2 {
+      width: 100%;
+      margin: auto;
       text-align: center;
     }
     .wrap-instructor-info {
-      width: 40% !important;
-      margin: 5px 30% !important;
+      display: table !important;
+      margin: 5px auto !important;
       float: none !important;
       a {
         width: 90% !important;
         padding: 4% !important;
       }
-    }
-  }
-  #nav-button {
-    .fa-bars {
-      box-shadow: none !important;
-      font-size: 1em !important;
     }
   }
   #course-success {
@@ -1011,26 +1012,6 @@ a {
           }
         }
       }
-    }
-  }
-}
-
-@media screen and (max-height: 575px) {
-  #side-nav {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-  #nav-button {
-    margin-top: 10vh !important;
-  }
-}
-
-@media screen and (max-height: 400px) {
-  #nav-button {
-    height: auto !important;
-    margin-top: 0 !important;
-    .fa-bars {
-      height: auto !important;
     }
   }
 }
@@ -1302,6 +1283,12 @@ a {
     width: 100% !important;
     margin: 0 auto 20px auto;
     padding-right: 10px;
+    padding-bottom: 30px;
+    .course-summary {
+      header {
+        padding-top: 0 !important;
+      }
+    }
   }
 
   .course-info {
@@ -1330,6 +1317,40 @@ a {
   }
 }
 
+@media screen and (max-width: 650px) {
+  #content {
+    .intro-inner-wrapper {
+      .media {
+        .hero {
+          margin-top: 25% !important;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  #content {
+    .intro-inner-wrapper {
+      .media {
+        .hero {
+          margin-top: 40% !important;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  #content {
+    .intro-inner-wrapper {
+      .media {
+        .hero {
+          margin-top: 70% !important;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 460px) {
     .course-profile {
       .intro-inner-wrapper {
@@ -1338,7 +1359,6 @@ a {
       .heading-group {
         h1 {
           width: 100%;
-          text-align: center !important;
         }
       }
       .main-cta {
@@ -1384,6 +1404,7 @@ a {
         min-width: 320px;
         .heading-group {
           h1 {
+            text-align: center;
             text-shadow: none;
           }
         }
@@ -1712,6 +1733,9 @@ a {
           width: 95% !important;
           margin: 0 auto !important;
         }
+      }
+      .search-facets {
+        margin-top: 0 !important;
       }
     }
   }
