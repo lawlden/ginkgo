@@ -5,6 +5,7 @@ $mid-gray: rgb(230,230,230);
 $text-gray: rgb(118,118,118);
 $border-gray: rgb(200,200,200);
 $base-gray: rgb(40,40,40);
+$header-gray: rgb(100,100,100);
 
 //Variable Overrides
 $header-bg: $off-white;
@@ -75,7 +76,7 @@ a {
 
 #main {
   h1,h2,h3,h4,h5,h6 {
-    color: $dark-text !important;
+    color: $dark-text;
   }
 }
 
@@ -245,6 +246,7 @@ a {
         }
        .fa-custom {
          color: inherit !important;
+         padding-left: 1px;
         }
       }
       .user-dropdown-menu {
@@ -1118,6 +1120,12 @@ a {
         min-height: 500px !important;
         .vert-mod {
           height: auto;
+          h2,h3 {
+            color: $header-gray;
+            text-transform: uppercase;
+            outline-color: initial;
+            font-weight: normal;
+          }
           .xblock-student_view-html {
             background: white;
             height: auto;

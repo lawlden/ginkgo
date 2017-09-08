@@ -213,14 +213,14 @@ from openedx.core.lib.courses import course_image_url
 
     <div class="course-sidebar">
       <div class="course-summary">
-
+   
         <%include file="course_about_sidebar_header.html" />
-
+        <% CPE = get_course_about_section(request, course, "effort") %>
         <ol class="important-dates">
-          % if get_course_about_section(request, course, "effort"):
-            <li class="important-dates-item"><span class="icon fa fa-pencil" aria-hidden="true"></span><p class="important-dates-item-title">${_("CPE Hours")}</p><span class="important-dates-item-text effort">${get_course_about_section(request, course, "effort")}</span></li>
+          % if CPE:
+            <li class="important-dates-item"><span class="icon fa fa-pencil" aria-hidden="true"></span><p class="important-dates-item-title">${_("CPE Hours")}</p><span class="important-dates-item-text effort">${CPE}</span></li>
           % endif
-
+         
           ##<li class="important-dates-item"><span class="icon fa fa-clock-o" aria-hidden="true"></span><p class="important-dates-item-title">${_('Course Length')}</p><span class="important-dates-item-text course-length">${_('{number} weeks').format(number=15)}</span></li>
 
           %if course_price and (can_add_course_to_cart or is_cosmetic_price_enabled):

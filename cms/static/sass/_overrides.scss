@@ -6,6 +6,7 @@ $text-gray: rgb(118,118,118);
 $border-gray: rgb(200,200,200);
 $base-gray: rgb(40,40,40);
 $hover-blue: rgb(0,121,188);
+$header-gray: rgb(100,100,100);
 
 //Theme-specific Variables
 $light-text: $off-white;
@@ -117,7 +118,6 @@ header {
   .nav-actions {
     display: inline-block;
   }
-
 }
 
 .content-supplementary {
@@ -125,7 +125,23 @@ header {
     text-align: center;
     display: block;
   }
+}
 
+#main {
+  .content-primary {
+    .reorderable-container {
+      article.xblock-render {
+        h3 {
+          color: #646464;
+          font-weight: normal;
+          font-size: 1.3em;
+          line-height: 1.4em;
+          margin-bottom: 15px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
 }
 
 ///////////////////////////////
