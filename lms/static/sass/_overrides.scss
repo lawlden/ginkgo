@@ -1743,7 +1743,8 @@ a {
         }
       }
       .search-facets {
-        margin-top: 0 !important;
+        margin-top: 5px !important;
+        margin-bottom: 0 !important
       }
     }
   }
@@ -1787,6 +1788,9 @@ a {
       margin: auto;
       padding: 40px 0 75px 0 !important;
       width: 96%;
+      .search-facets {
+        float: right;
+      }
       #discovery-form {
         max-width: 1200px;
         margin: auto 10px auto 10px;
