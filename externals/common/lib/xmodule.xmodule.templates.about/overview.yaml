@@ -12,22 +12,21 @@ data: |
     <section class="prerequisites">
       <h2>Requirements</h2>
       <p>Add information about the skills and knowledge students need to take this course.</p>
-    </section>
       <h2>Professional Focus and Applicable Certifications</h2>
       <p>Add information about the skills and knowledge students should expect to gain from this course, as well as the Professional Certifications to which your content may apply.</p>
-
+    </section>
     <section class="course-staff">
       <h2>Enstructor</h2>
       <article class="teacher">
         <div class="teacher-image">
-          <img src="/static/images/placeholder-faculty.png" align="left" style="margin:0 20 px 0" alt="Enstructor Bio Image">
+          <img src="/static/images/placeholder-faculty.png" align="left" style="margin:0 20 px 0" alt="Enstructor Image">
         </div>
         <h3>Enstructor Name</h3>
         <p>Biography of Enstructor, including applicable experience and credentials.</p>
       </article>
     </section>
 
-    <!-- section is optional, to use FAQ, delete this line and the "comment end" line at the end of the section 
+    <!--Optional Section: to have FAQ, delete this line and the "comment end" line after this section. 
     <section class="faq">
       <section class="responses">
         <h2>Frequently Asked Questions</h2>
@@ -41,7 +40,7 @@ data: |
         </article>
       </section>
     </section>
-    comment end --> 
+    comment end--> 
 
     <div hidden="True">
     <!--
@@ -50,5 +49,6 @@ data: |
                        Course Content Keywords
                        Professional Specializations/Certification Domain(s)
     -->
+      <p style="display:none;" class="search-keywords"> </p>
     </div>
-    <p hidden="True" class="search-keywords"></p>
+    
