@@ -31,6 +31,7 @@ from django.utils.translation import ugettext as _
   </div>
 </script>
 
+%if user.is_staff:
 <fieldset class="batch-enrollment membership-section">
     <legend id="heading-batch-enrollment" class="hd hd-3">${_("Batch Enrollment")}</legend>
     <label>
@@ -82,6 +83,7 @@ from django.utils.translation import ugettext as _
     <div class="request-response"></div>
     <div class="request-response-error"></div>
 </fieldset>
+% endif
 
 %if static.get_value('ALLOW_AUTOMATED_SIGNUPS', settings.FEATURES.get('ALLOW_AUTOMATED_SIGNUPS', False)):
 <hr class="divider" />
@@ -115,6 +117,7 @@ from django.utils.translation import ugettext as _
         ${_("Note: Users must have an activated {platform_name} account before they can be enrolled as beta testers.").format(platform_name=settings.PLATFORM_NAME)}
         <textarea rows="6" cols="50" name="student-ids-for-beta" placeholder="${_("Email Addresses/Usernames")}" spellcheck="false"></textarea>
     </label>
+ 
     <div class="enroll-option">
         <label class="has-hint">
             <input type="checkbox" name="auto-enroll-beta" id="auto-enroll-beta" value="Auto-Enroll" checked="yes" aria-describedby="heading-batch-beta-testers">
@@ -152,6 +155,7 @@ from django.utils.translation import ugettext as _
 <hr class="divider" />
 %endif
 
+% if user.is_staff:
 <div class="member-lists-management membership-section" aria-live="polite">
   ## Translators: an "Administration List" is a list, such as Course Staff, that users can be added to.
   <h3 class="hd hd-3">${_("Course Team Management")}</h3>
@@ -277,3 +281,4 @@ from django.utils.translation import ugettext as _
     ></div>
   %endif
 </div>
+% endif

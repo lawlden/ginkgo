@@ -132,7 +132,7 @@ a {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 768px) {
   .header-global {
     .logo {
       margin-right: 10px !important;
@@ -142,12 +142,17 @@ a {
     .course-header {
       display: none !important;
     }
+    .user {
+      max-width: 75% !important;
+    }
   }
 }
 
-@media only screen and (max-width: 400px) {
-  #username {
-    display: none !important;
+@media only screen and (max-width: 500px) {
+  .header-global {
+    #username {
+      display: none !important;
+    }
   }
 }
 
@@ -210,7 +215,6 @@ a {
   #username {
     margin-right: 8px;
     border-bottom: none;
-    max-width: 95px;
     text-overflow: ellipsis;
     a {
       background-color: transparent;
@@ -246,6 +250,9 @@ a {
         }
        .fa-custom {
          color: inherit !important;
+         margin: auto;
+         display: table;
+         float: none;
          padding-left: 1px;
         }
       }
@@ -262,17 +269,21 @@ a {
 
 .header-global.slim {
   min-width: 0 !important;
-  .course-header {
-    width: auto;
-    max-width: 55%;
-    margin-top: 13px;
-  }
-  .logo {
-    img {
-      margin-top: -7px;
+  .logo-header {
+    .logo {
+      img {
+        margin-top: -7px;
+      }
+    }
+    .course-header {
+      width: 35%;
+      margin-top: 13px;
+      text-overflow: ellipsis;
     }
   }
-  #headdrop {
+  .user {
+    max-width: 50%;
+    text-overflow: ellipsis;
     .user-menu {
       height: 31px;
       width: 31px;
@@ -281,15 +292,11 @@ a {
         width: 100%;
         padding: 0;
         text-align: center;
-        fa {
-          margin: auto;
+        .fa-custom {
+          padding: 0 !important;
         }
       }
     }
-  }
-  #slimlogo {
-    margin: 0;
-    padding: 0;
   }
 }
 
@@ -883,6 +890,12 @@ a {
     }
   }
   #main {
+    #instructor-dashboard-content {
+      .instructor-nav {
+        display: inline-block !important;
+        text-align: center;
+      }
+    }  
     .info-wrapper {
       .updates {
         padding: 20px !important;
@@ -1197,9 +1210,43 @@ a {
   #instructor-dashboard-content {
     #course_info {
       .enrollment-wrapper {
-        .period-display {
+        margin-bottom: 0;
+        .totals {
+          color: green;
+          font-weight: bold;
+        }
+        table {
           td {
-            padding: 0 !important;
+            text-align: center;
+          }
+        }
+        .year-wrapper {
+          padding-bottom: 5px;
+          button:focus {
+            outline: none;
+          }
+          button.year-total {
+            padding: 7px 10px;
+          }
+          .enrollment-data {
+            .data-wrapper {
+              vertical-align: top;
+              width: 122px;
+              display: inline-block;
+              margin-top: 5px;
+              .btn {
+                display: block;
+                margin: auto;
+                width: 122px;
+              }
+              tbody {
+                padding-top: 5px;
+                tr {
+                  height: 24px !important;
+                  text-align: center;
+                }
+              }
+            }
           }
         }
         table {

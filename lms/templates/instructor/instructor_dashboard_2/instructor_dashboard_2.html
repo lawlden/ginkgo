@@ -22,7 +22,7 @@ from openedx.core.djangolib.markup import HTML
 ## 5. Implement your standard django/python in lms/djangoapps/instructor/views/api.py
 ## 6. And tests go in lms/djangoapps/instructor/tests/
 
-<%block name="pagetitle">${_("Instructor Dashboard")}</%block>
+<%block name="pagetitle">${_("Enstructor Dashboard")}</%block>
 
 <%block name="headextra">
   <%static:css group='style-course-vendor'/>
@@ -103,7 +103,7 @@ from openedx.core.djangolib.markup import HTML
   <div class="instructor-dashboard-wrapper-2">
         <main id="main" aria-label="Content" tabindex="-1">
         <section class="instructor-dashboard-content-2" id="instructor-dashboard-content">
-          <h2 class="hd hd-2 instructor-dashboard-title">${_("Instructor Dashboard")}</h2>
+          <h2 class="hd hd-2 instructor-dashboard-title">${_("Enstructor Dashboard")}</h2>
           <div class="wrap-instructor-info studio-view">
             %if studio_url:
             <a class="instructor-info-action" href="${studio_url}">${_("View Course in Studio")}</a>
