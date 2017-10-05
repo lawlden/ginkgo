@@ -428,8 +428,12 @@ a {
     border: 1px solid $border-gray;
     border-radius: 4px;
     background-color: $light-gray;
-    a:hover {
-      text-decoration: none;
+    a {
+      color: $hover-blue;
+      &:hover {
+        text-decoration: none;
+        color: $dark-text;
+      }
     }
   }
   #container-about {
