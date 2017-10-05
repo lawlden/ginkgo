@@ -419,6 +419,28 @@ a {
 
 //Static_Templates Overrides
 
+@media only screen and (max-width: 450px) {
+  .container.about {
+    margin-bottom: 20px !important;
+    table.contact {
+      font-size: 0.8em;
+    }
+    #address {
+      width: 100% !important;
+    }
+  }
+}
+@media only screen and (max-width: 805px) {
+  #container-jobs {
+    hr {
+      display: block !important;
+    }
+    p {
+      line-height: 1.5em !important;
+    }
+  }
+}
+
 #main {
   .container.about {
     max-width: 768px;
@@ -442,9 +464,48 @@ a {
       padding-bottom: 40px;
     } 
   }
+  #container-jobs {
+    img {
+      border-radius: 2px;
+      background: white;
+    }
+    h1 {
+      text-shadow: 0.5px 0.5px rgb(34,34,34);
+      font-weight: bold;
+    }
+    hr {
+      display: none;
+    }
+    p {
+      line-height: 2em;
+    }
+  }
   #container-contact {
+    table.contact {
+      width: auto;
+      margin: auto;
+      border-collapse: separate;
+      border-radius: 3px;
+      border: 1px solid $border-gray;
+      background: $off-white;
+      tbody {
+        tr {
+          td {
+            padding: 10px;
+            width: auto;
+            &:last-child {
+              text-align: center;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
     #address {
-      margin-top: 100px;
+      width: 50%;
+      margin: 30px auto;
+      font-size: 0.9em;
+      text-align: center;
     }
   }
 }

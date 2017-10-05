@@ -3,32 +3,12 @@
 <%inherit file="../main.html" />
 
 <%block name="pagetitle">${_("Teach With Us")}</%block>
-<style>
-  h1 {
-    text-shadow: 0.5px 0.5px rgb(34,34,34);
-  }
-  hr {
-    display: none;
-  }
-  p {
-    line-height: 2em;
-  }
-  @media screen and (max-width: 805px) {
-    hr {
-      display: block;
-    }
-    p {
-      line-height: 1.5em;
-    }
-  }
-
-</style>
 
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="container about">
-      <div style="text-align:center;">
-        <img src="https://s3-us-west-2.amazonaws.com/enstructoalpha/binary.png"/>
-        <h1 style="font-weight:bold;">${_("Think you have what it takes?")}</h1>
+      <div id="container-jobs" style="text-align:center;">
+        <img src="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/binary.png"/>
+        <h1>${_("Think you have what it takes?")}</h1>
         <hr />
         <p>${_("Are you an expert in one (or more) facets of Data Privacy or Information Security?")}</p>
         <hr />

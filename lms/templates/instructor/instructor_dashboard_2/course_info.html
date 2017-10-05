@@ -142,22 +142,22 @@ for y in years:
                   monthlies = {}
                   dates = []
                   totes = []
-                  for i in v:
+                  for d in v:
                       if i not in monthlies.keys():
-                          monthlies[i] = 1
+                          monthlies[d] = 1
                       else:
-                          monthlies[i] +=1
-                  for d in day_sort:
+                          monthlies[d] +=1
+                  for day in day_sort:
                       for date, number in monthlies.items():
-                          if date[3:5] == d:
+                          if date[3:5] == day:
                               dates.append(date[:5])
                               totes.append(number)
                           else:
                               pass                   
                 %>
-                <div class="data-wrapper data-${i}">   
-                  <button class="btn" id="btn-${k}-${i}" onclick="displayTable('${k}${i}');active('btn-${k}-${i}');">${k}</button>
-                  <table style="display:none;" id=${k}${i}>
+                <div class="data-wrapper wrapper-${k}-${i}">   
+                  <button class="btn" id="btn-${k}-${i}" onclick="displayTable('data-${k}-${i}');active('btn-${k}-${i}');">${k}</button>
+                  <table style="display:none;" id="data-${k}-${i}">
                   <% c = 1 %>
                   % while c <= len(dates):
                     <tr><td>${dates[c-1]}: &nbsp;<span class="totals">${totes[c-1]}</span></td></tr>
