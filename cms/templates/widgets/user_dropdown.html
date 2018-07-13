@@ -22,7 +22,7 @@
       <ul class="dropdown-menu list-divided is-hidden" id="${_("Usermenu")}" tabindex="-1">
           <%block name="navigation_dropdown_menu_links" >
               <li class="dropdown-item item has-block-link">
-                <a href="/">${_("{studio_name} Home").format(studio_name=settings.STUDIO_SHORT_NAME)}</a>
+                <a href="/">${_("Dashboard")}</a>
               </li>
           </%block>
           <li class="dropdown-item item has-block-link">
@@ -44,7 +44,7 @@
     <div class="nav-sub">
       <ul>
         <li class="nav-item nav-account-dashboard">
-          <a href="/">${_("{studio_name} Home").format(studio_name=settings.STUDIO_SHORT_NAME)}</a>
+          <a href="/">${_("Dashboard")}</a>
         </li>
         % if GlobalStaff().has_user(user) & user.is_staff:
         <li class="nav-item">

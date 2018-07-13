@@ -24,6 +24,34 @@ from pipeline_mako import render_require_js_path_overrides
 <!--[if lte IE 9]><html class="ie ie9 lte9" lang="${LANGUAGE_CODE}"><![endif]-->
 <!--[if !IE]><!--><html lang="${LANGUAGE_CODE}"><!--<![endif]-->
 <head dir="${static.dir_rtl()}">
+<!-- Google Analytics -->
+  <script>
+    var oneYr = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+    var expire = oneYr.toGMTString();
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    var gaProperty = 'UA-98928788-2';
+ 
+    // Disable tracking if the opt-out cookie exists.
+    var disableStr = 'ga-disable-' + gaProperty;
+    if (document.cookie.indexOf(disableStr + '=true') > -1) {
+        window[disableStr] = true;
+    }
+    function gaOptOut() {
+        document.cookie = disableStr + '=true; expires='+expire+'; path=/';
+        window[disableStr] = true;
+        document.cookie = '_ga=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+        document.cookie = '_gat=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+        document.cookie = '_gid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+    }
+    function gaOptIn() {
+        document.cookie = 'ga-enable=true; expires='+expire+'; path=/';
+    }
+    ga('create', 'UA-98928788-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -123,7 +151,7 @@ from pipeline_mako import render_require_js_path_overrides
 </head>
 
 <body class="${static.dir_rtl()} <%block name='bodyclass'/> lang_${LANGUAGE_CODE}">
-
+<!--[if lte IE 10]><script>var browser = navigator.appName; alert("UPGRADE YOUR BROWSER!\nIf you insist on using an ancient version of "+browser+", your user experience is going to be terrible!"); $(document).ready(function{$(".window-wrap").css("display":"none")});</script><![endif]-->
 <%static:optional_include_mako file="body-initial.html" is_theming_enabled="True" />
 <div id="page-prompt"></div>
 % if not disable_window_wrap:

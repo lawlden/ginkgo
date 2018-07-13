@@ -18,7 +18,7 @@ from django.conf import settings
 
         ## Translators: This text will be automatically posted to the student's
         ## Twitter account. {url} should appear at the end of the text.
-        tweet_text = _("I just enrolled in {number} {title} through {account}: {url}").format(
+        tweet_text = _("I just enrolled in a course from {account}! {url}").format(
             number=course.number,
             title=course.display_name_with_default_escaped,
             account=static.get_value('course_about_twitter_account', settings.PLATFORM_TWITTER_ACCOUNT),
@@ -32,8 +32,8 @@ from django.conf import settings
         facebook_link = static.get_value('course_about_facebook_link', settings.PLATFORM_FACEBOOK_ACCOUNT)
 
         email_subject = u"mailto:?subject={subject}&body={body}".format(
-            subject=_("Take a course with {platform} online").format(platform=platform_name),
-            body=_("I just enrolled in {number} {title} through {platform} {url}").format(
+            subject=_("You should check out {platform}!").format(platform=platform_name),
+            body=_("I just enrolled in {title} from {platform} {url}").format(
                 number=course.number,
                 title=course.display_name_with_default_escaped,
                 platform=platform_name,

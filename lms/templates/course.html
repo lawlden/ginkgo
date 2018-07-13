@@ -4,6 +4,7 @@
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
 from django.conf import settings
+import re
 %>
 
 <%page args="course" expression_filter="h"/>
@@ -18,15 +19,23 @@ from django.conf import settings
     </header>
     <div class="course-info" aria-hidden="true">
       <h2 class="course-name">
-        %if course.advertised_start:
+        % if course.advertised_start:
         <span class="course-organization">${course.advertised_start}</span>
-        %else:
+        % elif course.display_org_with_default == "Enstructo":
+        <% org = "Enstructo Team" %>
+        <span class="course-organization">${org}</span>
+        % elif course.display_org_with_default == "edX":
         <span class="course-organization">${course.display_org_with_default}</span>
-        %endif
+        % else:
+        <%
+          enstructor = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', course.display_org_with_default) 
+        %>
+        <span class="course-organization">${enstructor}</span>
+        % endif
         <span class="course-title">${course.display_name_with_default}</span>
-        %if course.effort and course.effort != '0.0':
+        % if course.effort and course.effort != '0.0':
         <span id="cpe" class="course-organization">${course.effort} CPE Hours</span>
-        %endif
+        % endif
       </h2>
     </div>
   </a>

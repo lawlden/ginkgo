@@ -200,6 +200,14 @@ from openedx.core.djangolib.markup import HTML, Text
             </ul>
           </div>
         </div>
+      % else:
+        <div class="profile-sidebar" id="profile-sidebar" role="region" aria-label="Account Status Info">
+          <header class="profile">
+            <h2><a target="_blank" href="https://tracker.enstructo.com/dashboard/">${_("Track Certifications")}</a></h2>
+          </header>
+          <div class="user-info">
+          </div>
+        </div>
       % endif
     </div>
 </main>

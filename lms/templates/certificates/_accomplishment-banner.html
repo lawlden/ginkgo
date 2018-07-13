@@ -35,18 +35,16 @@ from django.template.defaultfilters import escapejs
           return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width='+width+', height='+height+', top='+top+', left='+left);
       };
       function getURL() {
+          var url = $(location).attr("href");
           var dark = "#111";
           var light = "#F2F8FB";
-          document.getElementById("certURL").style.display="inline-block";
-          document.getElementById("certURL").value=location.href;
-          document.getElementById("certURL").style.width="320px";
-          document.getElementById("action-copy-link").innerHTML="Click URL to Copy";
-          document.getElementById("action-copy-link").style.backgroundColor=dark;
-          document.getElementById("action-copy-link").style.color=light;
-          document.getElementById("action-copy-link").onmouseover = function() {
-            this.style.backgroundColor=dark;
-            this.style.color=light;
-          };
+          $("#certURL").css({"display":"inline-block","width":"375px","cursor":"default","text-align":"center"});
+          $("#certURL").val(url);
+          $("#action-copy-link").html("Click URL to Copy");
+          $("#action-copy-link").css({"background-color":dark,"color":light});
+          $("#action-copy-link").mouseover(function(){
+              $(this).css({"background-color":dark,"color":light,"cursor":"default"});
+          });
       };
   </script>
 </%block>

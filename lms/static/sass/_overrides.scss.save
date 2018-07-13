@@ -35,53 +35,7 @@ $border: 1px solid $border-gray;
 
 //////////////////////////////////////////
 
-//IE 10 & 11 Specific Fix(es)
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  #main {
-    .courses {
-      .courses-listing-item {
-        img {
-          max-width: 170px !important;
-        }
-      }
-    }
-  }
-  .teacher-image {
-    height: auto !important;
-    min-height: 75px;
-    margin-bottom: 15px !important;
-    padding: 0 !important;
-    .enstructor-image {
-      min-height: auto;
-      height: 100%;
-    }
-  }
-  .intro-inner-wrapper {
-    .hero {
-      img {
-        display: table !important;
-        margin: auto !important;
-        width: auto !important;
-        max-width: 250px !important;
-      }
-    }
-  }
-}
-//Edge-Specific Fix(es)
-@supports (-ms-ime-align: auto) {
-  .play-intro::after {
-    font: FontAwesome !important;
-    font-family: FontAwesome !important;
-    content: "\f04b" !important;
-    font-size: 2em !important;
-  }
-}
-
 //Global Overrides
-
-*:focus {
-  outline: none !important;
-}
 
 html {
   background: $light-gray !important;
@@ -147,6 +101,7 @@ a {
   &:focus {
     background: $off-white !important;
     box-shadow: none !important;
+    outline: none !important;
     color: $hover-blue !important;
   }
   #loading-indicator {
@@ -931,7 +886,7 @@ a {
           }
           img {
             border-radius: inherit;
-            margin: auto;
+            margin: 2 2 2 2  auto;
             max-height: 170px;
             height: auto;
             object-fit: scale-down;
@@ -1355,6 +1310,9 @@ a {
         }
         .year-wrapper {
           padding-bottom: 5px;
+          button:focus {
+            outline: none;
+          }
           button.year-total {
             padding: 7px 10px;
           }
@@ -1621,6 +1579,7 @@ a {
 .hero {
   border-radius: 2px;
 }
+
 #content {
   .course-info {
     .course-profile {
@@ -1697,11 +1656,6 @@ a {
           background: transparent;
           .hero {
             border: none;
-            .play-intro::after {
-              font-family: FontAwesome !important;
-              font: FontAwesome !important;
-              content: "\f04b" !important;
-            }
           }
         }
       }
@@ -1753,14 +1707,11 @@ a {
                top: 25%;
                left: 25%;
                color: rgba(255,255,255, 0.8);
+               content: "\25B6";
                text-align: center;;
+               font: normal 2em/1em 'Open Sans', Arial, Helvetica, sans-serif;
                position: absolute;
                text-shadow: 0 -1px rgba(0,0,0, 0.8);
-               font-family: FontAwesome !important;
-               font: FontAwesome !important;
-               font-size: 2em;
-               content: "\f04b" !important;
-               margin-top: 5px;
              }
            }
            img {
@@ -1884,9 +1835,6 @@ a {
         border: 1px dotted $border-gray;
         padding: 2%;
         background: white;
-        .fa {
-          color: lighten($dark-text, 20%);
-        }
         .review {
           margin-top: 10px;
           span.review-date {
@@ -1912,15 +1860,17 @@ a {
 
 @media screen and (max-width: 680px) {
   #freshness {
-    font-size: 0.65em !important; 
+    font-size: 0.65em !important;
   }
 }
 
 @media screen and (max-width: 560px) {
   .course-item {
     .wrapper-course-details {
-      h3 {
-        font-size: 20px !important;
+      course-title {
+        a {
+          font-size: 20px !important;
+        }
       }
     }
   }
@@ -1932,11 +1882,13 @@ a {
 @media screen and (max-width: 425px) {
   #my-courses {
     width: 90%;
+    
     .course-item {
       .wrapper-course-details {
         padding-top: 6px;
         h3 {
           line-height: 2em;
+          font-size: 1.4em;
         }
         div {
           font-size: 0.9em;
@@ -1953,10 +1905,9 @@ a {
             margin-top: 6px;
           }
           .wrapper-action-more {
-            margin-top: -9.5px;
-            button {
-              font-size: 1.1em;
+            .action-more {
               padding: 8px !important;
+              margin-top: -4px;
             }
           }
         }
@@ -1964,7 +1915,7 @@ a {
       footer {
         .course-status-certavailable {
           .message-copy {
-            display: none !important;
+            font-size: 0.85em;
           } 
           .action-certificate {
             .btn {
@@ -2028,7 +1979,7 @@ a {
           }
         }
         .course-info {
-          margin-top: 15px;
+          margin-top: 18px;
           #freshness {
             font-size: 0.8em;
             color: $base-gray;
@@ -2119,11 +2070,6 @@ a {
       color: $dark-text;
     }
   }
-  .profile-sidebar {
-    width: 17.5%;
-    margin-left: 1%;
-    margin-right: auto;
-  }
 }
 
 #main {
@@ -2151,7 +2097,7 @@ a {
           }
           img {
             border-radius: inherit;
-            margin: auto;
+            margin: 2 2 2 2 auto;
             max-height: 170px;
             height: auto;
             object-fit: scale-down;

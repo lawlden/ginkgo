@@ -8,7 +8,7 @@ from openedx.core.djangolib.markup import HTML, Text
 <%inherit file="base.html" />
 
 <%def name="online_help_token()"><% return "home" %></%def>
-<%block name="title">${_("{studio_name} Home").format(studio_name=settings.STUDIO_SHORT_NAME)}</%block>
+<%block name="title">${_("Enstructor Dashboard").format(studio_name=settings.STUDIO_SHORT_NAME)}</%block>
 <%block name="bodyclass">is-signedin index view-dashboard</%block>
 
 <%block name="requirejs">
@@ -20,7 +20,8 @@ from openedx.core.djangolib.markup import HTML, Text
 <%block name="content">
 <div class="wrapper-mast wrapper">
   <header class="mast has-actions">
-    <h1 class="page-header">${_("{studio_name} Home").format(studio_name=settings.STUDIO_SHORT_NAME)}</h1>
+    <h1 class="page-header">Enstructor Dashboard</h1> <!--
+    <h1 class="page-header">${_("{studio_name} Home").format(studio_name=settings.STUDIO_SHORT_NAME)}</h1> -->
 
     % if user.is_active:
     <nav class="nav-actions" aria-label="${_('Page Actions')}">
@@ -322,8 +323,9 @@ from openedx.core.djangolib.markup import HTML, Text
 
       %if len(courses) > 0 or optimization_enabled:
       <div class="courses courses-tab active">
+        <h2>My Courses</h2>
         <ul class="list-courses">
-          %for course_info in sorted(courses, key=lambda s: s['display_name'].lower() if s['display_name'] is not None else ''):
+          % for course_info in sorted(courses, key=lambda s: s['display_name'].lower() if s['display_name'] is not None else ''):
           <li class="course-item" data-course-key="${course_info['course_key']}">
             <a class="course-link" href="${course_info['url']}">
               <h3 class="course-title">${course_info['display_name']}</h3>
@@ -451,9 +453,11 @@ from openedx.core.djangolib.markup import HTML, Text
         % endif
       </div>
       %endif
-
     </article>
     <aside class="content-supplementary" role="complementary">
+    % if len(courses) >= 1:
+      <%include file="dash_month.html" />
+    % else:
       <div class="bit">
         <h3 class="title title-3">${_('New to {studio_name}?').format(studio_name=settings.STUDIO_NAME)}</h3>
         <p>${_('Click Help in the upper-right corner to get more information about the {studio_name} page you are viewing. You can also use the links at the bottom of the page to access our continually updated documentation and other {studio_name} resources.').format(studio_name=settings.STUDIO_SHORT_NAME)}</p>
@@ -465,7 +469,6 @@ from openedx.core.djangolib.markup import HTML, Text
           </li>
         </ol>
       </div>
-
       % if course_creator_status=='disallowed_for_this_site' and settings.FEATURES.get('STUDIO_REQUEST_EMAIL',''):
       <div class="bit">
         <h3 class="title title-3">${_("Can I create courses in {studio_name}?").format(studio_name=settings.STUDIO_NAME)}</h3>
@@ -494,8 +497,8 @@ from openedx.core.djangolib.markup import HTML, Text
             link_end=HTML('</a>'),
           )}</p>
       </div>
-
       % endif
+    % endif
     </aside>
   </section>
 
@@ -524,7 +527,6 @@ from openedx.core.djangolib.markup import HTML, Text
       </div>
     </aside>
   </section>
-
   %endif
 </div>
 </%block>

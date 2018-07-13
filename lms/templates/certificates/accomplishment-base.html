@@ -30,6 +30,9 @@ course_mode_class = course_mode if course_mode else ''
     font-size: 1em !important;
     padding-top: none !important;
   }
+  #certURL {
+    width: 100% !important;
+  }
 }
 
 body {
@@ -81,10 +84,19 @@ span.organization {
   padding: 0 !important;
   margin-bottom: 0 !important;
 }
+.wrapper-metadata {
+  height: auto;
+}
 .metadata {
   text-align: center;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+.wrapper-metadata > dl {
+  height: 100%;
+} 
+wrapper-metadata > .metadata > div {
+  vertical-align: middle;
 }
 .accomplishment-recipient {
   word-wrap: break-word;

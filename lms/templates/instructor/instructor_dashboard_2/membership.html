@@ -1,3 +1,4 @@
+
 <%namespace name='static' file='/static_content.html'/>
 <%page args="section_data"/>
 <%!
@@ -83,6 +84,8 @@ from django.utils.translation import ugettext as _
     <div class="request-response"></div>
     <div class="request-response-error"></div>
 </fieldset>
+% else:
+<h3>Please Contact enstructors@enstructo.com for Batch Enrollment and Bulk E-Mail options.</h3>
 % endif
 
 %if static.get_value('ALLOW_AUTOMATED_SIGNUPS', settings.FEATURES.get('ALLOW_AUTOMATED_SIGNUPS', False)):

@@ -3,6 +3,12 @@ metadata:
     display_name: overview
 
 data: |
+    <style>
+      img.enstructor-image {
+        margin:0 20 px 0;
+        object-fit:cover;
+      }
+    <style>
     <section class="about">
       <h2>About This Course</h2>
       <p>Include your long course description here. The long course description should contain 150-400 words.</p>
@@ -19,7 +25,7 @@ data: |
       <h2>Enstructor</h2>
       <article class="teacher">
         <div class="teacher-image">
-          <img src="/static/images/placeholder-faculty.png" align="left" style="margin:0 20 px 0" alt="Enstructor Image">
+          <img class="enstructor-image" src="/static/images/placeholder-faculty.png" align="left" alt="Enstructor Image">
         </div>
         <h3>Enstructor Name</h3>
         <p>Biography of Enstructor, including applicable experience and credentials.</p>

@@ -2,6 +2,8 @@
 <%namespace name='static' file='../static_content.html'/>
 <%
 course_mode_class = course_mode if course_mode else ''
+cpe = course_id[-2:]
+cpe = float(cpe[0]+'.'+cpe[1])
 %>
 <script>
     window.onload=function() {
@@ -26,7 +28,7 @@ course_mode_class = course_mode if course_mode else ''
                 ##<span class="accomplishment-type-label hd-4">${document_title}</span>
             </div>
             <div id="logo-large">
-              <a class="logo" href="${marketing_link('ROOT')}">
+              <a class="logo" target="_blank" href="${marketing_link('ROOT')}">
                 <img class="logo-img" height="125px" src="https://s3-us-west-2.amazonaws.com/enstructoalpha/owl.png" alt="Enstructo Home"></img>
               </a>
             </div>
@@ -41,8 +43,20 @@ course_mode_class = course_mode if course_mode else ''
                             <span class="accomplishment-course-name">${accomplishment_copy_course_name}</span>
                         </span>
                     </p>
-
-                    ##<p class="accomplishment-statement-detail copy copy-lead">${accomplishment_copy_course_description}</p>
+                    <%
+                      if str(cpe).endswith('.0'):
+                          cpe = int(cpe)
+                      else:
+                          pass
+                      hour_tag = ""
+                      if cpe > 1:
+                          hour_tag = "hours"
+                      else:
+                          hour_tag = "hour"
+                    %>
+                    % if cpe != 0.0: 
+                      <p class="accomplishment-statement-detail copy copy-lead">${cpe} CPE ${hour_tag}</p>
+                    % endif
                 </div>
 
                 % if mode != 'base':

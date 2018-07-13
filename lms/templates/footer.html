@@ -7,7 +7,90 @@
   from datetime import date
 %>
 
+<style>
+  #GA-OptOut-wrapper {
+    z-index: 500;
+    margin-top: -66px;
+    height: 45px;
+    width: 100%;
+    position: absolute;
+    background: black;
+    opacity: 0.7;
+    color: white;
+    text-align: center;
+    font-size: 80%;
+  }
+  .GA {
+    display: table;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  .GA p {
+    display: inline-block;
+    width: 100%;
+    padding-top: 13px;
+  }
+  .GA span.GA-message {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .GA button {
+    background: white;
+    color: black;
+    font-size: inherit;
+    margin-top: -5px;
+    margin-left: 5px;
+    padding: 2px 4px;
+  }
+  .GA button:hover {
+    background: black;
+    color: white;
+  }
+  #GA-OptOut span#close {
+    position: absolute;
+    right: 12px;
+    top: 7px;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 500px) {
+    .GA {
+      font-size: 60%;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    #GA-OptOut-wrapper {
+      text-align: left;
+    }
+    .GA-message {
+      padding-left: 5px;
+      font-size: 80%;
+    }
+  }
+</style>
+
 <div class="wrapper-footer">
+  <div id="GA-OptOut-wrapper">
+    <div id="GA-OptOut" class="GA">
+      <p>
+        <span class="GA-message">This site uses Google Analytics, to opt out click</span>
+        <button onclick="gaOptOut();$('#GA-OptOut-wrapper').hide();">here</button> 
+        <span class="fa fa-times-circle-o" onclick="$('#GA-OptOut').hide();$('#GA-consent').show();" id="close"></span>
+      </p>
+    </div>
+    <div id="GA-consent" class="GA" style="display:none;">
+      <p>
+        <span class="GA-message">I Agree to Google Analytics Cookies</span>
+        <button onclick="gaOptIn();$('#GA-OptOut-wrapper').hide();">Yes</button>
+        <button onclick="gaOptOut();$('#GA-OptOut-wrapper').hide();">No</button>
+      </p>
+    </div>
+  </div>
+  <script>
+    if (document.cookie.indexOf('ga-disable-UA-98928788-2') > -1 || document.cookie.indexOf('ga-enable') > -1) {
+        $("#GA-OptOut-wrapper").remove();
+    };
+  </script>
   <footer>
     <div class="colophon">
       <nav class="nav-colophon">

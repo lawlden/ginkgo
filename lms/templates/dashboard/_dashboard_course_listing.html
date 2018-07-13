@@ -124,7 +124,9 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
                 endif
             endif
           %>
-
+        % if course_overview.has_started():
+        <p id="freshness">Course Active Since: ${course_overview.start.strftime("%m/%d/%Y")}</p>
+        % endif
                 % if isinstance(course_date, basestring):
                     <span class="info-date-block" data-tooltip="Hi">${_(container_string).format(date=course_date)}</span>
                 % elif course_date is not None:

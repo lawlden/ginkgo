@@ -69,7 +69,7 @@ html {
 
 ///////////////////////////////
 
-//Index Page Overrides
+//Dashboard Overrides
 
 .wrapper-mast {
   .new-course-button {
@@ -97,6 +97,8 @@ html {
 }
 .wrapper-content {
   .content-primary {
+    width: 68% !important;
+    margin-right: 1.5% !important;
     .notice-item {
       .accidental {
         a {
@@ -105,6 +107,47 @@ html {
             color: $hover-blue;
           }
         }
+      }
+    }
+  }
+  .content-supplementary {
+    width: 30% !important;
+    hr {
+      color: #b2b2b2
+    }
+    .invoices {
+      margin-top: 23px;
+      border: 1px solid #b2b2b2;
+      border-radius: 3px;
+      padding: 5px;
+      background: #fff;
+      .title {
+        text-align: center;
+        font-weight: 600;
+      }
+      div.enstructor {
+        margin-bottom: 5px;
+        border-bottom: 1px solid #b2b2b2;
+        div.year {
+          button {
+            margin-bottom: 5px;
+          }
+          th, td {
+            padding: 5px;
+          }
+          table {
+            margin: auto;
+            .header-row {
+              th {
+                vertical-align: middle;
+              }
+            }
+          }
+        }
+      }
+      div.enstructor:last-of-type {
+        margin-bottom: 0;
+        border-bottom: none;
       }
     }
   }
@@ -141,6 +184,17 @@ header {
         }
       }
     }
+  }
+}
+
+///////////////////////////////
+
+//Settings Overrides
+
+#settings_details {
+  textarea {
+    resize: vertical;
+    height: 175px;
   }
 }
 

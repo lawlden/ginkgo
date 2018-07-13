@@ -56,7 +56,11 @@ from django.core.urlresolvers import reverse
         %for student in students:
         <tr>
           <td>
-            <a href="${reverse('student_progress', kwargs=dict(course_id=course_id.to_deprecated_string(), student_id=student['id']))}">${student['username']}</a>
+            % if user.is_staff:
+              <a href="${reverse('student_progress', kwargs=dict(course_id=course_id.to_deprecated_string(), student_id=student['id']))}">${student['username']}</a>
+            % else:
+              ${student['username']}
+            % endif
           </td>
         </tr>
         %endfor

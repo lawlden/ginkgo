@@ -328,9 +328,9 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
 
                 % if short_description_editable:
                 <li class="field text" id="field-course-short-description">
-                  <label for="course-short-description">${_("Course Short Description")}</label>
+                  <label for="course-short-description">${_("Course Description")}</label>
                   <textarea class="text" id="course-short-description"></textarea>
-                  <span class="tip tip-stacked">${_("Appears on the course catalog page when students roll over the course name. Limit to ~150 characters")}</span>
+                  <span class="tip tip-stacked">${_("Used for Enstructo Certificates and in Enstructo's CPE Tracker, this should be a short but compehensive description of the course and its content. Please limit to ~250 words.")}</span>
                 </li>
                 % endif
 
@@ -456,13 +456,13 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
                   <div class="input input-existing">
                     <div class="current current-course-introduction-video">
                       <p><a class="link-courseURL" rel="external" href="${link_for_about_page}">View Video on Course About Page</a></p>
-                      <iframe width="618" height="350" title="${_('Course Introduction Video')}" src="" frameborder="0" allowfullscreen></iframe>
+                      <video width="618" height="350" title="${_('Course Introduction Video')}"><source src=""></video>
+                      ##<iframe width="618" height="350" title="${_('Course Introduction Video')}" src="" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="actions">
                       <a href="#" class="remove-item remove-course-introduction-video remove-video-data"><span class="delete-icon"></span>${_("Delete Current Video")}</a>
                     </div>
                   </div>
-
                   <div class="input">
                     ## Translators: This is the placeholder text for a field that requests a video ID for a course video
                     <input type="text"  dir="ltr" class="long new-course-introduction-video add-video-data" id="course-introduction-video" value="" placeholder="${_("ID for your Course Introduction Video")}" autocomplete="off" />

@@ -1,25 +1,50 @@
 <%page expression_filter="h"/>
 <%! from django.utils.translation import ugettext as _ %>
 <%inherit file="../main.html" />
-
+<style>
+div {
+  margin: auto;
+}
+object {
+  vertical-align: top;
+  margin: auto;
+}
+.half {
+  width: 160px;
+}
+.full {
+  width: 320px;
+}
+@media screen and (max-width: 400px) {
+  object {
+    display: table;
+  }
+  .half {
+    width: 50%;
+  }
+  .full {
+    width: 100%;
+  }
+}
+</style>
 <%block name="pagetitle">${_("Help")}</%block>
-
+<% content_store = "https://s3-us-west-2.amazonaws.com/enstructo-contentstore/" %>
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="container about">
         <h1>${_("Certification Information")}</h1>
         <div id="CompTIA" class="body-information">
           <h2>CompTIA</h2>
-          <a target="blank" href="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/CompTIA-CPE.png"><object width="160px" data="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/CompTIA-CPE.png" type="image/png"></object></a>
-          <a target="blank" href="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/CompTIA-Methods.png"><object width="320px" data="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/CompTIA-Methods.png" type="image/png"></object></a> 
+          <a target="blank" href="${content_store}CompTIA_Requirements.jpg"><object class="half" width="160px" data="${content_store}CompTIA_Requirements.jpg" type="image/jpeg"></object></a>
+          <a target="blank" href="${content_store}CompTIA-Methods.png"><object class="full" data="${content_store}CompTIA-Methods.png" type="image/png"></object></a> 
         </div>        
         <div id="DOD" class="body-information">
           <h2>Department of Defense Directive 8570 Baseline Certifications</h2>
-          <a target="blank" href="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/DODD8570-Level.png"><object width="320px" data="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/DODD8570-Level.png" type="image/png"></object></a>
-          <a target="blank" href="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/DODD8570-Body.png"><object width="320px" data="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/DODD8570-Body.png" type="image/png"></object></a>
+          <a target="blank" href="${content_store}DODD8570-Level.png"><object class="full" data="${content_store}DODD8570-Level.png" type="image/png"></object></a>
+          <a target="blank" href="${content_store}DODD8570-Body.png"><object class="full" data="${content_store}DODD8570-Body.png" type="image/png"></object></a>
         </div>
         <div id="EC-Council" class="body-information">
           <h2>EC-Council</h2>
-          <a target="blank" href="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/EC-Council_Activities.png"><object width="320px" data="https://s3-us-west-2.amazonaws.com/enstructo-contentstore/EC-Council_Activities.png" type="image/png"></object></a>
+          <a target="blank" href="${content_store}EC-Council_Activities.png"><object class="full" data="${content_store}EC-Council_Activities.png" type="image/png"></object></a>
         </div>
     </section>
 </main>

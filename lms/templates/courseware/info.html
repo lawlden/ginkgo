@@ -85,6 +85,7 @@ from openedx.features.course_experience import SHOW_REVIEWS_TOOL_FLAG
           ${HTML(get_course_info_section(request, masquerade_user, course, 'updates'))}
 
         </section>
+
         <section aria-label="${_('Handout Navigation')}" class="handouts">
           <h3 class="hd hd-3 handouts-header">${_("Course Tools")}</h3>
             <div>
@@ -92,12 +93,6 @@ from openedx.features.course_experience import SHOW_REVIEWS_TOOL_FLAG
                     <span class="icon fa fa-bookmark" aria-hidden="true"></span>
                     ${_("Bookmarks")}
                 </a>
-                % if SHOW_REVIEWS_TOOL_FLAG.is_enabled(course.id) and show_reviews_link:
-                    <a href="${reverse('openedx.course_experience.course_reviews', args=[course.id])}">
-                        <span class="icon fa fa-star" aria-hidden="true"></span>
-                        ${_("Reviews")}
-                    </a>
-                % endif
             </div>
 
           % if SelfPacedConfiguration.current().enable_course_home_improvements:

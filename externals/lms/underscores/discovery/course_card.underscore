@@ -8,7 +8,7 @@
         </header>
         <section class="course-info" aria-hidden="true">
             <h2 class="course-name">
-                <% if (advertised_start) { %><span class="course-organization"><%= advertised_start %></span><% } else { %><span class="course-organization"><%- org %></span><%} %>
+                <% if (advertised_start) { %><span class="course-organization"><%= advertised_start %></span><% } else if (org == "Enstructo") { %><span class="course-organization">Enstructo Team</span><% } else { %><span class="course-organization"><%- org.split(/(?=[A-Z])/).join(" ") %></span><%} %>
                 <span class="course-title"><%- content.display_name %></span>
                 <% if (effort && effort !="0.0") { %><span id="cpe" class="course-organization"><%= effort %> CPE Hours</span><% }  %>
             </h2>

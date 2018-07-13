@@ -91,7 +91,7 @@ define(['backbone', 'underscore', 'gettext', 'js/models/validation_helpers', 'js
             },
 
             videosourceSample: function() {
-                if (this.has('intro_video')) return 's3-us-west-2.amazonaws.com/enstructoalpha/' + this.get('intro_video');
+                if (this.has('intro_video')) return 's3-us-west-2.amazonaws.com/enstructo-course-videos/' + this.get('intro_video');
                 else return '';
             },
 

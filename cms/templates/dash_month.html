@@ -1,0 +1,130 @@
+
+<%!
+import os
+import csv
+import numpy as np
+from collections import OrderedDict
+%>
+
+<%
+path = "/analytics/Invoicing/csv/"
+year_list = os.listdir(path)
+filelist = []
+
+months = {'01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May', '06': 'June', '07': 'July',
+          '08': 'August', '09': 'September', '10': 'October', '11': 'November', '12': 'December'}
+month_sort = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+day_sort = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31']
+
+
+def float_format(num):
+    num = "%0.2f"%num
+    if num[-2:] == "00":
+        num = num[:-3]
+    return num
+
+%>
+<script>
+    function tableHide(elem) {
+        var table = $(elem).find("table")
+        if ($(table).is(":visible")) {
+            $(table).css("display","none");
+        };
+    };
+    $(document).ready(function() { 
+        if ( $("div.year").length ) {
+            $("#invoices").css("display", "block");
+        } else {
+            $("#invoices").css("display", "none");
+        };
+    });
+</script>
+
+
+<div class="invoices" id="invoices">
+  <h2 class="title">Invoice Breakdowns<h2>
+  <h3 class="title">by Year/Month</h3>
+  <hr>
+  % for course_info in courses:
+    % if course_info['org'] not in ['edX', 'Enstructo']:
+    <div class="enstructor" id="${course_info['org']}">
+      % if user.is_staff:
+        <h2>${course_info['org']}</h2>
+      % endif
+    % for y in year_list:
+      <%
+        filelist = []
+        list = os.listdir(path+y+"/")
+        for l in list:
+            filelist.append(l[:-4])
+      %>
+    % if course_info['org'] in filelist:
+    <% enst_name = course_info['org'].strip() %>
+    <div class="year" id="${enst_name}-${y}">
+      <button class="btn ${enst_name}-${y}" onclick="$('#${enst_name}-${y} > button.btn-month').toggle();tableHide('#${enst_name}-${y}')">${y}</button>
+      <br>
+    <%
+      hours = float(course_info['run'][-2:])
+      share = float_format((hours*5)/2)
+      enst_dict = {}
+      file = "{}{}.csv".format(path+y+"/",course_info['org'])
+      with open(file, 'r') as f:
+          readCSV = csv.reader(f, delimiter='\t')
+          for row in readCSV:
+              mon_num = row[1][:2]
+              mon = months[mon_num]
+              share = float(row[2])/2
+              course_total = {}
+              if mon in enst_dict.keys():
+                  enst_dict[mon].append([row[0], share])
+              else:
+                  enst_dict[mon] = [[row[0], share]]
+              enst_dict = OrderedDict(sorted(enst_dict.items(),key =lambda x:month_sort.index(x[0])))
+     %>
+     % for month in enst_dict.keys():
+       <% 
+         month_total = {}
+         course_totals = {}
+         for list in enst_dict[month]:
+             course_id = list[0]
+             share = list[1]
+             if course_id in month_total.keys():
+                 course_totals[course_id] += 1
+                 running_total = month_total[course_id]
+                 month_total[course_id] = running_total + share
+             else:
+                 course_totals[course_id] = 1
+                 month_total[course_id] = share
+       %>
+       <button style="display:none;" onclick="$('table#${enst_name}_${month}-${y}').toggle();" class="btn btn-month ${month}-${y}">${month}</button>    
+       <div class="${month} ${y}">
+         <table id="${enst_name}_${month}-${y}" class="month-breakdown" style="text-align:center;display:none;">     
+           <tr class="header-row"><th>Course</th><th>Enrollments</th><th>Revenue Share</th></tr>
+           % for c, s in month_total.items():
+             <% s_string = float_format(s) %>
+             <tr><th>${c}</th><td>${ course_totals[c] }</td><td class="course-total">${"${}".format(s_string)}</td></tr>
+           % endfor
+           % if len(month_total.keys()) > 1:
+             <% total = float_format(sum(month_total.values())) %>
+             <tr id="${enst_name}_${month}_${y}-total" style="border-top:1px solid rgb(154,154,154);"><td></td><th>Total: </th><td class="month-total">${"${}".format(total)}</td></tr>
+           % endif
+         <script>
+             var table = $("#${enst_name}_${month}-${y}")
+             if ( $("#${enst_name}_${month}_${y}-total").length ) {
+                 table.find(".month-total").css("font-weight","bold");
+                 table.find(".course-total").css("font-weight","normal");
+             } else {
+                 table.find(".course-total").css("font-weight","bold");
+             };
+         </script>       
+         </table>
+       </div>
+     % endfor
+    </div>
+    % endif
+    % endfor
+    </div>
+    % endif
+  % endfor
+</div>
+
